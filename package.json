@@ -1,0 +1,41 @@
+{
+  "name": "@lorb/phantom-page",
+  "version": "0.2.0",
+  "description": "Click a link. The page materializes. It never existed before that moment.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "service-worker",
+    "on-demand",
+    "page-generation",
+    "phantom",
+    "ephemeral",
+    "sw-interception"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "homepage": "https://lorb.studio",
+  "author": "Lorb.studio <dev@lorb.studio> (https://lorb.studio)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lorb-studio/make",
+    "directory": "phantom-page"
+  }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>phantom-page demo</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 2rem auto; padding: 0 1rem; }
+    #status { padding: 0.5rem 1rem; border-radius: 4px; margin-bottom: 1.5rem; }
+    #status.pending { background: #fef3c7; color: #92400e; }
+    #status.active { background: #d1fae5; color: #065f46; }
+    #status.error { background: #fee2e2; color: #991b1b; }
+    nav { display: flex; flex-direction: column; gap: 0.5rem; }
+    nav a { color: #2563eb; pointer-events: none; opacity: 0.4; }
+    nav a.enabled { pointer-events: auto; opacity: 1; }
+  </style>
+</head>
+<body>
+  <h1>phantom-page demo</h1>
+  <div id="status" class="pending">Registering Service Worker...</div>
+  <nav>
+    <a href="/idea/42" class="phantom-link">Idea #42</a>
+    <a href="/idea/7" class="phantom-link">Idea #7</a>
+    <a href="/random" class="phantom-link">Random page</a>
+  </nav>
+
+  <script>
+    const status = document.getElementById('status');
+    const links = document.querySelectorAll('.phantom-link');
+
+    async function start() {
+      try {
+        const reg = await navigator.serviceWorker.register('/demo-sw.js', { scope: '/' });
+
+        // Wait for activation
+        const sw = reg.installing || reg.waiting || reg.active;
+        if (sw && sw.state !== 'activated') {
+          await new Promise(resolve => {
+            sw.addEventListener('statechange', function check() {
+              if (sw.state === 'activated') {
+                sw.removeEventListener('statechange', check);
+                resolve();
+              }
+            });
+          });
+        }
+
+        // Wait for controller
+        if (!navigator.serviceWorker.controller) {
+          await new Promise(resolve => {
+            navigator.serviceWorker.addEventListener('controllerchange', resolve, { once: true });
+          });
+        }
+
+        status.textContent = 'SW active — click a link';
+        status.className = 'active';
+        links.forEach(a => a.classList.add('enabled'));
+      } catch (err) {
+        status.textContent = 'Error: ' + err.message;
+        status.className = 'error';
+      }
+    }
+
+    start();
+  </script>
+</body>
+</html>
