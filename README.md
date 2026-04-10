@@ -1,8 +1,8 @@
 <p align="center">
   <a href="https://lorb.studio">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset=".github/logo-light.svg">
-      <img alt="Lorb.studio" src=".github/logo-dark.svg" height="40">
+      <source media="(prefers-color-scheme: dark)" srcset="../.github/logo-light.svg">
+      <img alt="Lorb.studio" src="../.github/logo-dark.svg" height="40">
     </picture>
   </a>
 </p>
