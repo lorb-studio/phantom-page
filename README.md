@@ -9,6 +9,10 @@
   <a href="https://www.npmjs.com/package/@lorb/phantom-page"><code>npm install @lorb/phantom-page</code></a>
 </p>
 
+<p align="center">
+  <img src="./demo.gif" alt="phantom-page demo" width="600">
+</p>
+
 **No server.** Routes live in the browser. A Service Worker intercepts navigation and generates HTML on the fly — styled, dynamic, instant.
 
 **No files.** No static HTML to maintain. Define routes in JavaScript, and pages materialize at the moment of navigation.
