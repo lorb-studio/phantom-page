@@ -1,15 +1,13 @@
 <p align="center">
-  <a href="https://lorb.studio">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="../.github/logo-light.svg">
-      <img alt="Lorb.studio" src="../.github/logo-dark.svg" height="40">
-    </picture>
-  </a>
+  <img src=".github/icon.png" width="80" height="80" alt="phantom-page" />
 </p>
 
-# @lorb/phantom-page
+<h1 align="center">phantom-page</h1>
+<p align="center">Pages that don't exist until you click them.</p>
 
-Pages that don't exist until you click them.
+<p align="center">
+  <a href="https://www.npmjs.com/package/@lorb/phantom-page"><code>npm install @lorb/phantom-page</code></a>
+</p>
 
 **No server.** Routes live in the browser. A Service Worker intercepts navigation and generates HTML on the fly — styled, dynamic, instant.
 
